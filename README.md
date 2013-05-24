@@ -27,6 +27,13 @@ src/Crypto.jl and OpenSSL.jl includes the generated files
 
 - ```man EVP_DigestInit``` has information on using them.
   
+  
+## Example
+```
+using OpenSSLCrypto.Crypto
+sb = bytes2hex(Crypto.hmacsha256_digest("The quick brown fox jumps over the lazy dog", "key"))
+assert(sb == "f7bc83f430538424b13298e6aa6fb143ef4d59a14946175997479dbc2d1a3cd8")
+```
 
 
 

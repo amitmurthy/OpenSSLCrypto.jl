@@ -1,4 +1,4 @@
-module OpenSSL
+module OpenSSLCrypto
 
 include("Crypto.jl")
 
