@@ -59,7 +59,7 @@ function md5(s::IO)
         assert(rc == 1)
         
         while (!eof(s))
-            b = read(s, Uint8, nb_available(s) > 65536 ? 65536 : nb_available(s))    # Read in 64 K chunks....
+            b = read(s, Uint8, min(nb_available(s), 65536))    # Read in 64 K chunks....
             
             rc = EVP_DigestUpdate(evp_md_ctx, b, length(b));
             assert(rc == 1)
