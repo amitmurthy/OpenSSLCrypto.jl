@@ -13,6 +13,8 @@ src/Crypto.jl and OpenSSL.jl includes the generated files
 
 - Currently functions in openssl/md5.h, openssl/hmac.h, openssl/sha.h and openssl/evp.h have been wrapped
 
+- Please refer to openssl documentation on using them
+
 - The EVP_* family of functions provide higer level functions for other lower level openssl functions.
 
 - ```man EVP_DigestInit``` has information on using them.
@@ -38,7 +40,7 @@ sb = bytes2hex(Crypto.hmacsha256_digest("The quick brown fox jumps over the lazy
 assert(sb == "f7bc83f430538424b13298e6aa6fb143ef4d59a14946175997479dbc2d1a3cd8")
 ```
 
-# TODO
+# TODO 
 - More utility functions
 - More crypto functions exposed
 
