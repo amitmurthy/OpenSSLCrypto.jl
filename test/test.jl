@@ -28,10 +28,25 @@ println("PASSED : HMAC-SHA1")
 
 
 d="Just a really long string......Just a really long string......Just a really long string......Just a really long string......Just a really long string......Just a really long string......"
-s = zeros(Uint8, 16)
-@test MD5(d, length(d), s) != C_NULL
-
-sb = bytes2hex(s)
+sb = bytes2hex(Crypto.md5(d))
 
 @test "5c0614d60fb48f8f318c3578ca959120" == sb
 println("PASSED : MD5")
+
+
+repeat="hello"
+xtimes=100000
+real_long_string = ^(repeat, xtimes)
+
+iob = IOBuffer(length(repeat) * xtimes) 
+write(iob, real_long_string)
+
+seekstart(iob)
+
+iomd5 = bytes2hex(Crypto.md5(iob))
+
+smd5 = bytes2hex(Crypto.md5(real_long_string))
+
+@test iomd5 == smd5
+println("PASSED : IO MD5")
+
