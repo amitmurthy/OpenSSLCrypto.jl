@@ -1,16 +1,17 @@
 OpenSSLCrypto
 =============
 
-Julia interface to crypto functions from OpenSSL
+Julia interface to crypto functions from OpenSSL.
+Currently in only wraps functions in openssl/md5.h, openssl/hmac.h, openssl/sha.h and openssl/evp.h 
 
 gen/generate.jl generates the wrapper using Clang.jl
 
 src/crpyto_* files are the generated files
 src/Crypto.jl and OpenSSL.jl includes the generated files
 
-USAGE
-=====
-- The following high level functions are available
+## Usage
+
+- The following higher level functions are available.
 
 ```hmacsha256_digest(s::String, k::Union(String, Vector{Uint8})) -> Vector{Uint8}``` returns a 32 byte HMACSHA256 digest for the given data and key
 
@@ -22,8 +23,11 @@ USAGE
 
 
 
-- For other crypto functions, please refer to the EVP* functions of openssl. ```man EVP_DigestInit``` should bring up the man page
-  for EVP* higher level functions provided by OpenSSL crypto.
+- The EVP_* family of functions provide higer level functions for other lower level openssl functions.
+
+- ```man EVP_DigestInit``` has information on using them.
+  
+
 
 
 
